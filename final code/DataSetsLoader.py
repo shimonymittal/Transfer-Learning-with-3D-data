@@ -59,6 +59,15 @@ class DataSetsLoader:
             try:
                 data = pd.read_csv(f, sep=" ")
                 data = data.fillna(method='ffill').fillna(method='bfill')
+                
+                #Code for adding RGB values to the data
+                # if(f[0].lower() == 'b'):
+                #     data['R'], data['G'], data['B'] = [0, 1, 0]
+                # if(f[0].lower() == 'g'):
+                #     data['R'], data['G'], data['B'] = [1, 0, 0]
+                # if(f[0].lower() == 'v'):
+                #     data['R'], data['G'], data['B'] = [0, 1, 0]                
+                    
                 if (len(data)>=self.num_points):
                      #We sample a point cloud file using `.sample()` which performs a unifrom random sampling. Here we sample at 4096 locations
                     points.append(data.sample(self.num_points))  
